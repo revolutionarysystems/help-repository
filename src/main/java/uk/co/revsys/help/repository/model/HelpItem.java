@@ -2,9 +2,7 @@ package uk.co.revsys.help.repository.model;
 
 import uk.co.revsys.content.repository.annotation.ContentName;
 import uk.co.revsys.content.repository.annotation.ContentType;
-import uk.co.revsys.content.repository.annotation.Versioned;
 
-@Versioned
 @ContentName("title")
 @ContentType("help/item")
 public class HelpItem {
