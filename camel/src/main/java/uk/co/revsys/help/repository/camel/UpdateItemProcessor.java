@@ -40,7 +40,7 @@ public class UpdateItemProcessor extends AbstractHelpRepositoryProcessor{
 
     @Override
     public String getUrlPath() {
-        return getPath();
+        return "/update" + getPath();
     }
     
     @Override

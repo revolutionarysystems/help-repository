@@ -23,6 +23,12 @@
         </dependency> 
         
         <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.3.5</version>
+        </dependency>
+        
+        <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-core</artifactId>
             <version>2.10.6</version>
@@ -69,7 +75,7 @@
                         <Bundle-SymbolicName>help-repository-camel</Bundle-SymbolicName>
                         <Export-Package>uk.co.revsys.help.repository.camel.*</Export-Package>
                         <Import-Package>*</Import-Package>
-                        <Embed-Dependency>esb-component</Embed-Dependency>
+                        <Embed-Dependency>esb-component,httpmime,httpclient,httpcore</Embed-Dependency>
                         <Embed-Transitive>true</Embed-Transitive>
                     </instructions>
                 </configuration>

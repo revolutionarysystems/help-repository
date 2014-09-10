@@ -17,6 +17,7 @@ public class HelpRepositoryComponent extends HttpProxyComponent{
         mappings.put("upload", UploadProcessor.class);
         mappings.put("download", DownloadProcessor.class);
         mappings.put("delete", DeleteProcessor.class);
+        mappings.put("search", SearchProcessor.class);
     }
     
 }
