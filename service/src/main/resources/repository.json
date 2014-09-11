@@ -16,7 +16,7 @@
         "cacheName" : "persisted-repository",
         "binaryStorage" : {
             "type" : "file",
-            "directory": "/var/help-repository/binaries",
+            "directory": "/opt/help-repository/binaries",
             "minimumBinarySizeInBytes" : 999
         }
     }

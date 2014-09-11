@@ -10,7 +10,7 @@
                     preload="false"
                     fetchPersistentState="false"
                     purgeOnStartup="false"
-                    location="/var/help-repository/content">
+                    location="/opt/help-repository/content">
             </singleFile>
         </persistence>
         <transaction
