@@ -7,6 +7,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
     
+    <import resource="securityContext.xml"/>
+    
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
@@ -21,6 +23,10 @@
 		</property>
 		<property name="instances">
 			<set>
+                <bean class="uk.co.revsys.content.repository.rest.PublicContentRepositoryRestService">
+                    <constructor-arg index="0" ref="repositoryFactory"/>
+                    <constructor-arg index="1" ref="objectMapper"/>
+				</bean>
 				<bean class="uk.co.revsys.help.repository.rest.HelpRepositoryRestService">
                     <constructor-arg index="0" ref="repositoryFactory"/>
                     <constructor-arg index="1" ref="objectMapper"/>
@@ -34,6 +40,23 @@
     
     <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
     
-    <bean id="authorisationHandler" class="uk.co.revsys.content.repository.security.AllowAllAuthorisationHandler"/>
+    <bean id="authorisationHandlers" class="java.util.HashMap">
+        <constructor-arg index="0">
+            <map key-type="java.lang.String" value-type="uk.co.revsys.content.repository.security.AuthorisationHandler">
+                <entry key="disabled" value-ref="allowAllAuthorisationHandler"/>
+                <entry key="enabled" value-ref="defaultAuthorisationHandler"/>
+            </map>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="authorisationHandler" factory-bean="authorisationHandlers" factory-method="get">
+        <constructor-arg index="0" value="${security}"/>
+    </bean>
+    
+    <bean id="allowAllAuthorisationHandler" class="uk.co.revsys.content.repository.security.AllowAllAuthorisationHandler"/>
+    
+    <bean id="defaultAuthorisationHandler" class="uk.co.revsys.content.repository.security.AuthorisationHandlerImpl">
+        <constructor-arg index="0" value="${security.administrator.role}"/>
+    </bean>
     
 </beans>
