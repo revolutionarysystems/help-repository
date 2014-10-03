@@ -42,9 +42,6 @@ public class HelpRepositoryRestService extends AbstractContentRepositoryRestServ
     @Path("{path:.*}")
     public Response createItem(@PathParam("path") String path, @FormParam("title") String title, @FormParam("text") String text, @FormParam("url") String url) {
         try {
-            if (!isAdministrator()) {
-                return Response.status(Response.Status.FORBIDDEN).build();
-            }
             if (title == null || (text == null && url == null)) {
                 return Response.status(Response.Status.BAD_REQUEST).build();
             }
@@ -74,9 +71,6 @@ public class HelpRepositoryRestService extends AbstractContentRepositoryRestServ
     @Path("/update/{path:.*}")
     public Response updateItem(@PathParam("path") String path, @FormParam("title") String title, @FormParam("text") String text, @FormParam("url") String url) {
         try {
-            if (!isAdministrator()) {
-                return Response.status(Response.Status.FORBIDDEN).build();
-            }
             Map<String, String> properties = new HashMap<String, String>();
             if (title != null && !title.isEmpty()) {
                 properties.put("title", title);
