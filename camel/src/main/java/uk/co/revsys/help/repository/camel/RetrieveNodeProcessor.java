@@ -1,5 +1,7 @@
 package uk.co.revsys.help.repository.camel;
 
+import org.apache.camel.Exchange;
+
 public class RetrieveNodeProcessor extends AbstractHelpRepositoryProcessor{
 
     public RetrieveNodeProcessor(String baseUrl) {
@@ -12,7 +14,7 @@ public class RetrieveNodeProcessor extends AbstractHelpRepositoryProcessor{
     }
 
     @Override
-    public String getUrlPath() {
+    public String getUrlPath(Exchange exchange) {
         return getPath();
     }
 

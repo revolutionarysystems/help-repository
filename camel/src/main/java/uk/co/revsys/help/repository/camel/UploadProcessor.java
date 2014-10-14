@@ -36,7 +36,7 @@ public class UploadProcessor extends AbstractHelpRepositoryProcessor {
     }
 
     @Override
-    public String getUrlPath() {
+    public String getUrlPath(Exchange exchange) {
         return "/binary" + getPath();
     }
 

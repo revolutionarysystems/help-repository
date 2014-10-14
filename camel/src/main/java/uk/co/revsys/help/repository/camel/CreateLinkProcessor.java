@@ -2,6 +2,7 @@ package uk.co.revsys.help.repository.camel;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.apache.camel.Exchange;
 
 public class CreateLinkProcessor extends AbstractHelpRepositoryProcessor{
 
@@ -39,7 +40,7 @@ public class CreateLinkProcessor extends AbstractHelpRepositoryProcessor{
     }
 
     @Override
-    public String getUrlPath() {
+    public String getUrlPath(Exchange exchange) {
         return getPath();
     }
     

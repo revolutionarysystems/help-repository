@@ -1,6 +1,6 @@
 package uk.co.revsys.help.repository.camel;
 
-import java.util.UUID;
+import org.apache.camel.Exchange;
 
 public class DeleteProcessor extends AbstractHelpRepositoryProcessor{
 
@@ -14,7 +14,7 @@ public class DeleteProcessor extends AbstractHelpRepositoryProcessor{
     }
 
     @Override
-    public String getUrlPath() {
+    public String getUrlPath(Exchange exchange) {
         return getPath();
     }
 

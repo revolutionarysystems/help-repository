@@ -1,5 +1,6 @@
 package uk.co.revsys.help.repository.camel;
 
+import org.apache.camel.Exchange;
 import uk.co.revsys.esb.component.HttpProxyProcessor;
 
 public class SearchProcessor extends HttpProxyProcessor{
@@ -24,7 +25,7 @@ public class SearchProcessor extends HttpProxyProcessor{
     }
 
     @Override
-    public String getUrlPath() {
+    public String getUrlPath(Exchange exchange) {
         return "/query?query=" + getQuery();
     }
 
