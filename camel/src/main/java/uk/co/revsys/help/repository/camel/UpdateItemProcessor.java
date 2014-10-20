@@ -8,6 +8,7 @@ public class UpdateItemProcessor extends AbstractHelpRepositoryProcessor{
 
     private String title;
     private String text;
+    private String status;
     
     public UpdateItemProcessor(String baseUrl) {
         super(baseUrl);
@@ -19,6 +20,14 @@ public class UpdateItemProcessor extends AbstractHelpRepositoryProcessor{
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getText() {
@@ -49,6 +58,7 @@ public class UpdateItemProcessor extends AbstractHelpRepositoryProcessor{
         Map<String, String> postParameters = new HashMap<String, String>();
         postParameters.put("title", title);
         postParameters.put("text", text);
+        postParameters.put("status", status);
         return postParameters;
     }
 
