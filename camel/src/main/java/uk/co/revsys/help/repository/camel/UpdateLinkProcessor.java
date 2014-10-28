@@ -8,6 +8,7 @@ public class UpdateLinkProcessor extends AbstractHelpRepositoryProcessor{
 
     private String title;
     private String url;
+    private String tags;
     
     public UpdateLinkProcessor(String baseUrl) {
         super(baseUrl);
@@ -27,6 +28,14 @@ public class UpdateLinkProcessor extends AbstractHelpRepositoryProcessor{
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 
     @Override
@@ -49,6 +58,7 @@ public class UpdateLinkProcessor extends AbstractHelpRepositoryProcessor{
         Map<String, String> postParameters = new HashMap<String, String>();
         postParameters.put("title", title);
         postParameters.put("url", url);
+        postParameters.put("tags", tags);
         return postParameters;
     }
 

@@ -9,6 +9,7 @@ public class UpdateItemProcessor extends AbstractHelpRepositoryProcessor{
     private String title;
     private String text;
     private String status;
+    private String tags;
     
     public UpdateItemProcessor(String baseUrl) {
         super(baseUrl);
@@ -38,6 +39,14 @@ public class UpdateItemProcessor extends AbstractHelpRepositoryProcessor{
         this.text = text;
     }
 
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
     @Override
     public String getContentType() {
         return APPLICATION_FORM_URLENCODED;
@@ -59,6 +68,7 @@ public class UpdateItemProcessor extends AbstractHelpRepositoryProcessor{
         postParameters.put("title", title);
         postParameters.put("text", text);
         postParameters.put("status", status);
+        postParameters.put("tags", tags);
         return postParameters;
     }
 

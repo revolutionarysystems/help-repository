@@ -33,14 +33,14 @@ public class HelpRepositoryRestService extends AbstractContentRepositoryRestServ
 
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public Response createItemInRoot(@FormParam("title") String title, @FormParam("text") String text, @FormParam("url") String url, @FormParam("status") String status) {
-        return createItem(null, title, text, url, status);
+    public Response createItemInRoot(@FormParam("title") String title, @FormParam("text") String text, @FormParam("url") String url, @FormParam("status") String status, @FormParam("tags") String tags) {
+        return createItem(null, title, text, url, status, tags);
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Path("{path:.*}")
-    public Response createItem(@PathParam("path") String path, @FormParam("title") String title, @FormParam("text") String text, @FormParam("url") String url, @FormParam("status") String statusString) {
+    public Response createItem(@PathParam("path") String path, @FormParam("title") String title, @FormParam("text") String text, @FormParam("url") String url, @FormParam("status") String statusString, @FormParam("tags") String tags) {
         try {
             if (title == null || (text == null && url == null)) {
                 return Response.status(Response.Status.BAD_REQUEST).build();
@@ -59,7 +59,7 @@ public class HelpRepositoryRestService extends AbstractContentRepositoryRestServ
             if(statusString != null){
                 status = Status.valueOf(statusString);
             }
-            ContentNode contentNode = getRepository().create(path, name, status, contentType, properties);
+            ContentNode contentNode = getRepository().create(path, name, status, tags, contentType, properties);
             return Response.ok(getObjectMapper().writeValueAsString(contentNode)).build();
         } catch (RepositoryException ex) {
             LOGGER.error("Unable to create item", ex);
@@ -73,7 +73,7 @@ public class HelpRepositoryRestService extends AbstractContentRepositoryRestServ
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Path("/update/{path:.*}")
-    public Response updateItem(@PathParam("path") String path, @FormParam("title") String title, @FormParam("text") String text, @FormParam("url") String url, @FormParam("status") String statusString) {
+    public Response updateItem(@PathParam("path") String path, @FormParam("title") String title, @FormParam("text") String text, @FormParam("url") String url, @FormParam("status") String statusString, @FormParam("tags") String tags) {
         try {
             Map<String, String> properties = new HashMap<String, String>();
             if (title != null && !title.isEmpty()) {
@@ -88,7 +88,7 @@ public class HelpRepositoryRestService extends AbstractContentRepositoryRestServ
             if(statusString != null){
                 status = Status.valueOf(statusString);
             }
-            ContentNode contentNode = getRepository().update(path, status, properties);
+            ContentNode contentNode = getRepository().update(path, status, tags, properties);
             return Response.ok(getObjectMapper().writeValueAsString(contentNode)).build();
         } catch (RepositoryException ex) {
             LOGGER.error("Unable to update item " + path, ex);
