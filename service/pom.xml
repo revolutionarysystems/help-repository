@@ -11,6 +11,10 @@
         <artifactId>help-repository-parent</artifactId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
+    
+    <properties>
+        <user-manager-version>0.2.0-SNAPSHOT</user-manager-version>
+    </properties>
 
     <dependencies>
         
@@ -23,7 +27,7 @@
         <dependency>
             <groupId>uk.co.revsys.utils</groupId>
             <artifactId>servlet-utils</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.2.0-SNAPSHOT</version>
         </dependency>
         
         <dependency>
@@ -45,12 +49,6 @@
         </dependency>
         
         <dependency>
-            <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-cachestore-jdbc</artifactId>
-            <version>5.2.10.Final</version>
-        </dependency>
-        
-        <dependency>
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
             <version>0.9.1.2</version>
@@ -69,7 +67,7 @@
         <dependency>
             <groupId>uk.co.revsys.utils</groupId>
             <artifactId>spring-utils</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.2.0-SNAPSHOT</version>
         </dependency>
         
         <dependency>
@@ -81,13 +79,7 @@
         <dependency>
             <groupId>uk.co.revsys.user-manager</groupId>
             <artifactId>user-manager-mongo</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.apache.wink</groupId>
-            <artifactId>wink-server</artifactId>
-            <version>1.4</version>
+            <version>${user-manager-version}</version>
         </dependency>
         
         <dependency>
@@ -145,7 +137,7 @@
         <dependency>
             <groupId>uk.co.revsys.user-manager</groupId>
             <artifactId>user-manager-test-util</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>${user-manager-version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
